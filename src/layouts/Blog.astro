@@ -1,0 +1,31 @@
+---
+import Card from "../components/Card.astro";
+import Hero from "../components/solid/Hero";
+import ArticleList from "../components/solid/ArticleListComponent.jsx";
+import ArticleService from "../services/blog.service";
+
+const { title } = Astro.props;
+---
+<section id="blog">
+    <h1>Blog</h1>
+    <div class="">
+        <div id="topics">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+        <div id="blog-entries">
+            <h2>Últimas Entradas</h2>
+            <div class="flex column">
+                <!-- <ul>
+                    {articles.map(article => (
+                        <Card href="lol" body="isto é uma sinopse" title="titulo um"></Card>
+                    ))}
+                    <Card href="lol" body="isto é uma sinopse" title="titulo dois"></Card>
+                    <Card href="lol" body="isto é uma sinopse" title="titulo tres"></Card>
+                </ul> -->
+                <Hero client:load></Hero>
+            </div>
+        </div>
+    </div>
+</section>

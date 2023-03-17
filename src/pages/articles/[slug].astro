@@ -1,0 +1,112 @@
+---
+import MoreArticles from '../../components/MoreArticles.astro'
+import BackIcon from '../../components/icons/Back.astro'
+import LinkIcon from '../../components/icons/Link.astro'
+import YoutubeIcon from '../../components/icons/Youtube.astro'
+import LinkedinIcon from '../../components/icons/Linkedin.astro'
+import TwitterIcon from '../../components/icons/Twitter.astro'
+import { getDirectusClient, getAssetURL, formatRelativeTime } from '../../utils/utils'
+import Layout from '../../layouts/Layout.astro'
+import ArticleService from '../../services/blog.service';
+
+export async function getStaticPaths() {
+  const directus = await getDirectusClient();
+  const response = await directus.items("articles").readByQuery({
+    fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
+    filter: { status: { _eq: "published" } },
+    limit: -1,
+  })
+
+  let articles = response.data
+
+  for (const [index, article] of Object.entries(articles)) {
+    const moreArticlesResponse = await directus.items("articles").readByQuery({
+      fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
+      filter: {
+        _and: [{ id: { _neq: article.id } }, { status: { _eq: "published" } }],
+      },
+      limit: 2,
+    })
+
+    const formattedMoreArticles = moreArticlesResponse.data.map(
+      (formattedMoreArticle) => {
+        return {
+          ...formattedMoreArticle,
+          publish_date: formatRelativeTime(
+            new Date(formattedMoreArticle.publish_date)
+          ),
+        }
+      }
+    )
+
+    articles[index] = {
+      params: { slug: article.id.toString() },
+      props: {
+        article: {
+          ...article,
+          publish_date: formatRelativeTime(new Date(article.publish_date)),
+          moreArticles: formattedMoreArticles,
+        }
+      }
+    }
+  }
+
+  return articles
+}
+const { article } = Astro.props
+---
+
+    <Layout>
+      <div class="current-article">
+        <section>
+          <div class="container">
+            <a href="/" class="current-article__backlink">
+              <BackIcon />
+              <span>Voltar</span>
+            </a>
+            <h1 class="current-article__title">{article.title}</h1>
+            <div class="current-article__detail">
+              <div class="current-article__wrapperOuter">
+                <div class="current-article__wrapperInner">
+                  <div class="current-article__authorImage">
+                    <img src={getAssetURL(article.user_created?.avatar)} alt="" loading="lazy" />
+                  </div>
+                  <div>
+                    <div class="current-article__authorName">
+                      {`${article.user_created?.first_name} ${article.user_created?.last_name}`}
+                    </div>
+                    <div class="current-article__time">
+                      {article.publish_date}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="current-article_coverImage">
+                <img src={getAssetURL(article.front_img)} alt="" />
+              </div>
+            </div>
+            <div class="current-article__body">
+              <div class="current-article__bodyContent" set:html={article.content}></div>
+              <ul class="current-article__bodySocials">
+                <li>
+                  <a href="https://www.youtube.com/c/DirectusVideos" target="_blank" rel="noreferrer noopener">
+                    <YoutubeIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/company/directus-io" target="_blank" rel="noreferrer noopener">
+                    <LinkedinIcon />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/directus" target="_blank" rel="noreferrer noopener">
+                    <TwitterIcon />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <MoreArticles articles={article.moreArticles} />
+      </div>
+    </Layout>

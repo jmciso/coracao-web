@@ -1,0 +1,164 @@
+---
+import '../stylesheet/main.css'
+
+import Logo from '../components/Logo.astro';
+// import ToggleTheme from '~/components/core/ToggleTheme.astro';
+// import ToggleMenu from '~/components/core/ToggleMenu.astro';
+
+const links = [
+	{url: '/casa', label: 'A Casa'},
+	{url: '/residencies', label: 'Residências'},
+	{url: '/therapies', label: 'Terapias'},
+	{url: '/men-circles', label: 'Círculos de Homens'},
+	{url: '/workshops', label: 'Workshops'},
+	{url: '/contacts', label: 'Contactos'},
+	{url: '/about-me', label: 'Sobre Mim'},
+	{url: '/blog', label: 'Blog'}
+];
+
+---
+<script>
+	const toggleMenuButton = document.getElementById('burger-button');
+	toggleMenuButton?.addEventListener('click', toggleHiddenMenu);
+	
+	function toggleHiddenMenu(evt: Event) {
+		evt.stopPropagation();
+		const btn = this;
+		const closeSVG = document.getElementById('svg-closed') as HTMLElement;
+		const openSVG = document.getElementById('svg-open') as HTMLElement;
+		const mobileMenu = document.getElementById('mobile-menu') as HTMLElement;
+		if (btn.classList.contains('closed')) {
+			//show mobile menu
+			btn.classList.remove('closed');
+			btn.classList.add('open');
+			
+			closeSVG.classList.remove('block');
+			closeSVG.classList.add('hidden');
+			
+			openSVG.classList.remove('hidden');
+			openSVG.classList.add('block');
+
+			mobileMenu.classList.add('block');
+			mobileMenu.classList.remove('hidden');
+		} else {
+			//hide mobile menu
+			btn.classList.remove('open');
+			btn.classList.add('closed');
+			
+			openSVG.classList.add('hidden');
+			openSVG.classList.remove('block');
+			
+			closeSVG.classList.add('block');
+			closeSVG.classList.remove('hidden');
+			mobileMenu.classList.remove('block');
+			mobileMenu.classList.add('hidden');
+		}
+	}
+
+</script>
+
+<header class="sticky top-0 z-40 flex-none mx-auto w-full" id="header">
+	<!-- <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4"> -->
+	<div class="py-3 px-3 md:flex md:justify-between xl:mx-auto xl:max-w-7xl md:px-4">
+		<div class="flex justify-between shrink-0 gap-2">
+			<a class="flex items-center p-2" href="/">
+				<Logo />
+			</a>
+			<div class="inset-y-0 left-0 flex items-center md:hidden">
+				<!-- Mobile menu button-->
+				<button id="burger-button" type="button" class="closed inline-flex items-center justify-center rounded-md p-2" aria-controls="mobile-menu" aria-expanded="false">
+				  <span class="sr-only">Open main menu</span>
+				  <!--
+					Icon when menu is closed.
+		
+					Heroicon name: outline/bars-3
+		
+					Menu open: "hidden", Menu closed: "block"
+				  -->
+				  <svg id="svg-closed" class="block h-8 w-8 focus:outline-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+				  </svg>
+				  <!--
+					Icon when menu is open.
+		
+					Heroicon name: outline/x-mark
+		
+					Menu open: "block", Menu closed: "hidden"
+				  -->
+				  <svg id="svg-open" class="hidden h-8 w-8 focus:outline-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+				  </svg>
+				</button>
+			  </div>
+		</div>
+		<nav
+			class="items-center w-full md:w-auto hidden md:flex h-[calc(100vh-100px)] md:h-auto overflow-y-auto md:overflow-visible"
+			aria-label="Main navigation">
+			<ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
+				{ links.map((page) => 
+						(
+						<li class="page">
+							<a class="font-medium px-4 py-3 flex items-center transition duration-150 ease-in-out"
+								href={page.url}>{page.label}</a>
+						</li>
+						))
+				}
+			</ul>
+			<!-- <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
+				<div class="hidden items-center md:flex">
+					<ToggleTheme iconClass="w-5 h-5" />
+					<a
+						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						aria-label="RSS Feed"
+						href={getRelativeLink('/rss.xml')}
+					>
+						<Icon name="tabler:rss" class="w-5 h-5" />
+					</a>
+					<a
+						href="https://github.com/onwidget/astrowind"
+						class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+						aria-label="Astrowind Github"
+					>
+						<Icon name="tabler:brand-github" class="w-5 h-5" />
+					</a>
+				</div>
+			</div> -->
+		</nav>
+		<div class="hidden absolute w-full h-max left-0 z-10" id="mobile-menu">
+			<div class="space-y-1 px-2 pt-2 pb-3">
+				<ul class="">
+					{ links.map((page) => 
+							(
+							<li class="page hover:text-white">
+								<a class="font-medium px-4 py-3 flex items-center transition duration-150 ease-in-out"
+									href={page.url}>{page.label}</a>
+							</li>
+							))
+					}
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+
+<style>
+	#burger-button:hover {
+		color: var(--foreground-subdued);
+		border-color: var(--foreground-subdued);
+		background-color: var(--foreground-accent);
+	}
+	#burger-button:focus {
+		outline-color: var(--foreground-accent);
+	}
+	li.page {
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+	#mobile-menu {
+		background-color: var(--background-alt);
+	}
+	#mobile-menu li.page {
+		font-size: 15px;
+	}
+	
+</style>

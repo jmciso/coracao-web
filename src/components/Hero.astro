@@ -1,0 +1,30 @@
+---
+import { getAssetURL } from "../utils/utils";
+
+const { article } = Astro.props
+---
+
+<article class="hero">
+  <div class="hero__topWrapper">
+    <div class="hero__imageWrapper">
+      <img src={getAssetURL(article.front_img)} alt="" loading="lazy" />
+    </div>
+    <span aria-hidden="true" class="tag">{article.topics.join(" ")}</span>
+  </div>
+  <h1 class="hero__title">
+    <a href={`/articles/${article.id}`}>{article.title}</a>
+  </h1>
+  <p class="hero__excerpt">{article.abstract}</p>
+  <div class="hero__detail">
+    <div class="hero__detailAuthorImage">
+      <img src={getAssetURL(article.user_created?.avatar)} alt="" loading="lazy" />
+    </div>
+    <div>
+      <div class="hero__detailAuthorName">
+        {`${article.user_created?.first_name} ${article.user_created?.last_name}`}
+      </div>
+      <div>{article.publish_date}</div>
+      <div class="hero__detailCategory">{article.topics.join(" ")}</div>
+    </div>
+  </div>
+</article>
