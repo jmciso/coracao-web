@@ -888,3 +888,9 @@
     color: var(--foreground-accent);
   }
   
+  .button_call-action-dark {
+    background-color: var(--foreground-accent);
+  }
+  .button_call-action-light {
+    background-color: var(--foreground-subdued);
+  }
