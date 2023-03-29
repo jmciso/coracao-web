@@ -1,13 +1,10 @@
 ---
 import MoreArticles from '../../components/MoreArticles.astro'
 import BackIcon from '../../components/icons/Back.astro'
-import LinkIcon from '../../components/icons/Link.astro'
 import YoutubeIcon from '../../components/icons/Youtube.astro'
-import LinkedinIcon from '../../components/icons/Linkedin.astro'
 import TwitterIcon from '../../components/icons/Twitter.astro'
 import { getDirectusClient, getAssetURL, formatRelativeTime } from '../../utils/utils'
 import Layout from '../../layouts/Layout.astro'
-import ArticleService from '../../services/blog.service';
 
 export async function getStaticPaths() {
   const directus = await getDirectusClient();
