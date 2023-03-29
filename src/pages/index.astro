@@ -8,7 +8,7 @@ import Layout from "../layouts/Layout.astro";
 		style="background-image: url('home-hero1.jpg')"
 	>
 		<div class="container mx-auto pt-32 pb-40 px-4">
-			<div class="text-center text-white">
+			<div class="text-center text-white w-full md:w-2/3 lg:w-1/2 mx-auto">
 				<img src="/cc-home.svg" alt="Casa Coração" />
 				<!-- <h1 class="text-5xl mb-4 font-bold">Welcome to Rustic Place</h1> -->
 				<p class="text-xl mb-4">
@@ -16,10 +16,7 @@ import Layout from "../layouts/Layout.astro";
 					rooted in American shamanism traditions, medicines and
 					ceremonies.
 				</p>
-				<button
-					class="bg-white font-bold rounded py-4 px-8 uppercase tracking-wider text-gray-700 hover:text-black"
-					>Saber Mais</button
-				>
+				<a href="/casa" class="bg-white font-bold rounded py-4 px-8 uppercase tracking-wider text-gray-700 hover:text-black">Saber Mais</a>
 			</div>
 		</div>
 	</section>
@@ -49,13 +46,13 @@ import Layout from "../layouts/Layout.astro";
 				<ul class="md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
 					<li>
 						<div class="flex">
-							<div class="flex-shrink-0">
+							<!-- <div class="flex-shrink-0">
 								<div
-									class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white"
+									class="flex items-center justify-center h-12 w-12 rounded-md button_call-action-dark text-white"
 								>
 									<img src="" />
 								</div>
-							</div>
+							</div> -->
 							<div class="ml-4">
 								<h4
 									class="text-lg leading-6 font-medium text-gray-900"
@@ -74,9 +71,9 @@ import Layout from "../layouts/Layout.astro";
 					</li>
 					<li class="mt-10 md:mt-0">
 						<div class="flex">
-							<div class="flex-shrink-0">
+							<!-- <div class="flex-shrink-0">
 								<div
-									class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white"
+									class="flex items-center justify-center h-12 w-12 rounded-md button_call-action-dark text-white"
 								>
 									<svg
 										class="h-6 w-6"
@@ -94,7 +91,7 @@ import Layout from "../layouts/Layout.astro";
 										></path>
 									</svg>
 								</div>
-							</div>
+							</div> -->
 							<div class="ml-4">
 								<h4
 									class="text-lg leading-6 font-medium text-gray-900"
@@ -117,7 +114,7 @@ import Layout from "../layouts/Layout.astro";
 	</section>
 	<!--  -->
 	<section
-		class="bg-cover bg-center w-full"
+		class="bg-cover bg-center w-full py-20"
 		style="background-image: url('home-hero2.jpg')"
 	>
 		<div class="container mx-auto pt-32 pb-40 px-4">
@@ -147,10 +144,10 @@ import Layout from "../layouts/Layout.astro";
 					<img
 						class="w-full h-48 object-cover"
 						src="servicos/temazcal.jpg"
-						alt="Service 1"
+						alt="Terapias"
 					/>
 					<div class="py-4 px-6">
-						<h3 class="text-lg font-bold mb-2">Service 1</h3>
+						<h3 class="text-lg font-bold mb-2">Terapias</h3>
 						<p class="text-gray-600 text-sm">
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit, sed do eiusmod tempor incididunt ut labore et
@@ -160,9 +157,9 @@ import Layout from "../layouts/Layout.astro";
 						</p>
 						<div class="m-5">
 						<a
-							href="#"
+							href="/terapias"
 							class="button_call-action-dark text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline"
-							>Learn More</a
+							>Saber Mais</a
 						>
 						</div>
 					</div>
@@ -171,10 +168,10 @@ import Layout from "../layouts/Layout.astro";
 					<img
 						class="w-full h-48 object-cover"
 						src="servicos/altar.jpg"
-						alt="Service 2"
+						alt="Retiros & Workshops"
 					/>
 					<div class="py-4 px-6">
-						<h3 class="text-lg font-bold mb-2">Service 2</h3>
+						<h3 class="text-lg font-bold mb-2">Retiros & Workshops</h3>
 						<p class="text-gray-600 text-sm">
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit, sed do eiusmod tempor incididunt ut labore et
@@ -184,9 +181,9 @@ import Layout from "../layouts/Layout.astro";
 						</p>
 						<div class="m-5">
 							<a
-								href="#"
+								href="/workshops"
 								class="button_call-action-dark hover:button_call-action-light text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline"
-								>Learn More</a
+								>Saber Mais</a
 							>
 						</div>
 					</div>
@@ -195,10 +192,10 @@ import Layout from "../layouts/Layout.astro";
 					<img
 						class="w-full h-48 object-cover"
 						src="servicos/oliveira.jpg"
-						alt="Service 3"
+						alt="Círculos de Homens"
 					/>
 					<div class="py-4 px-6">
-						<h3 class="text-lg font-bold mb-2">Service 3</h3>
+						<h3 class="text-lg font-bold mb-2">Círculos de Homens</h3>
 						<p class="text-gray-600 text-sm">
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit, sed do eiusmod tempor incididunt ut labore et
@@ -208,9 +205,9 @@ import Layout from "../layouts/Layout.astro";
 						</p>
 						<div class="m-5">
 							<a
-								href="#"
-								class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline"
-								>Learn More</a
+								href="/men-circles"
+								class="button_call-action-dark hover:bg-blue-600 text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline"
+								>Saber Mais</a
 							>
 						</div>
 					</div>

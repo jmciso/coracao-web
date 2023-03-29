@@ -26,7 +26,7 @@ const UNITS = {
   second: 1000,
 };
 
-const LOCALE = "en";
+const LOCALE = "pt";
 
 const rtf = new Intl.RelativeTimeFormat(LOCALE, { numeric: "auto" });
 

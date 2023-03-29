@@ -1,14 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 ---
 
 <Layout title="Contactos">
-	<section>
-		<h1>Bem vindo à <span class="text-gradient">Casa Coração</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-	</section>
+	<!-- <section> -->
+		<div class="container mx-auto">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+			  <!-- Email Section -->
+			  <div class="bg-white p-8 rounded-lg shadow-md">
+				<h2 class="text-2xl font-bold mb-4">Email</h2>
+				<p class="text-gray-600 mb-4">For general inquiries, please email us at:</p>
+				<a href="mailto:info@yourwebsite.com" class="text-blue-500 hover:text-blue-600">info@yourwebsite.com</a>
+			  </div>
+			  <!-- Address Section -->
+			  <div class="bg-white p-8 rounded-lg shadow-md">
+				<h2 class="text-2xl font-bold mb-4">Address</h2>
+				<p class="text-gray-600 mb-4">You can find us at the following address:</p>
+				<address class="not-italic">
+				  123 Main St<br>
+				  Suite 456<br>
+				  Anytown, USA<br>
+				  12345
+				</address>
+			  </div>
+			  <!-- Social Media Section -->
+			  <div class="bg-white p-8 rounded-lg shadow-md">
+				<h2 class="text-2xl font-bold mb-4">Social Media</h2>
+				<ul class="list-none">
+				  <li class="mb-4">
+					<a href="#" class="text-blue-500 hover:text-blue-600">
+					  <i class="fab fa-facebook-square mr-2"></i>Facebook
+					</a>
+				  </li>
+				  <li class="mb-4">
+					<a href="#" class="text-blue-500 hover:text-blue-600">
+					  <i class="fab fa-twitter-square mr-2"></i>Twitter
+					</a>
+				  </li>
+				  <li class="mb-4">
+					<a href="#" class="text-blue-500 hover:text-blue-600">
+					  <i class="fab fa-instagram-square mr-2"></i>Instagram
+					</a>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+		  </div>
+	<!-- </section> -->
 </Layout>

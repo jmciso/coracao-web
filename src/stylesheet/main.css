@@ -894,3 +894,10 @@
   .button_call-action-light {
     background-color: var(--foreground-subdued);
   }
+
+  /* videos */
+  @media (min-width: 1024px) {
+    .w-192 {
+      width: 46rem;
+    }
+  }

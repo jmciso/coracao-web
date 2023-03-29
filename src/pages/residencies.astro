@@ -1,14 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 ---
 
 <Layout title="Residências">
-	<section>
-		<h1>Bem vindo à <span class="text-gradient">Casa Coração</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-	</section>
+	<section class="bg-gray-100 py-20">
+		<div class="container mx-auto">
+			<!-- <div class="relative z-10 text-center">
+				<h2 class="text-4xl font-bold uppercase tracking-wide">Welcome to The House</h2>
+				<p class="mt-4 text-xl text-white">Learn about our mission and the history behind it.</p>
+			  </div> -->
+		  <div class="relative flex items-center justify-center overflow-hidden">
+			<!-- <video class="h-full object-cover" autoplay controls>
+			  <source src="vids/residencias.mp4" type="video/mp4"> -->
+			  <!-- Add other video source types here -->
+			<!-- </video> -->
+			<div class="relative flex h-96 items-center justify-center overflow-hidden">
+				<iframe class="rumble" width="640" height="360" src="https://rumble.com/embed/v2clqdk/?pub=1xe254" frameborder="0" allowfullscreen></iframe>
+			</div>
+		  </div>
+		</div>
+	  </section>
+	  <section class="bg-gray-100 py-20">
+		<div class="container mx-auto">
+		  <h2 class="text-4xl font-bold mb-4">Our Mission</h2>
+		  <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec blandit ex. Nulla facilisi. Nulla pretium consequat felis, eget sagittis lacus lobortis eu. Morbi bibendum sapien at libero luctus lacinia. Vivamus vel lorem eu eros pulvinar congue sed non turpis. Fusce vehicula dignissim massa at convallis. In euismod tristique lectus sed facilisis.</p>
+		  <p class="mb-4">Curabitur sit amet nibh quis mauris rhoncus efficitur vitae nec purus. Sed bibendum, mauris eget dapibus tincidunt, nisi odio malesuada tellus, euismod eleifend tellus turpis vel ex. Vivamus blandit eu augue vel hendrerit. Praesent a nibh tortor. In hac habitasse platea dictumst. Sed vel lectus non lorem placerat interdum.</p>
+		</div>
+	  </section>
+	  <section class="bg-gray-100 py-20">
+		<div class="container mx-auto">
+		  <h2 class="text-3xl font-bold mb-4">Our Vision</h2>
+		  <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel lorem augue. Duis euismod felis eu enim bibendum ullamcorper. Integer vitae diam vel arcu semper consequat. In hac habitasse platea dictumst. Suspendisse aliquam enim ut turpis bibendum eleifend. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam scelerisque gravida enim, ut imperdiet enim rhoncus id. Praesent aliquet, lectus at ullamcorper hendrerit, velit odio pretium enim, ac consequat est arcu quis sapien. Vivamus feugiat enim odio, sed tincidunt nunc posuere sed. Sed interdum posuere urna, in tempus massa. Sed tempor euismod ipsum, sit amet euismod orci tincidunt a. Nullam et augue in est posuere semper. Sed dictum tincidunt quam, at bibendum elit pellentesque sit amet. Fusce euismod est in dui eleifend, at sollicitudin velit hendrerit.</p>
+		  <p class="mb-4">Aliquam eget dapibus odio. Fusce consectetur ac metus eu venenatis. Sed mollis ante tellus, vitae maximus lectus vehicula ac. Nulla facilisi. Nullam commodo efficitur velit, ut aliquam nibh suscipit ac. Duis venenatis, velit vitae varius rhoncus, ipsum velit feugiat libero, a dignissim nisi massa vel lorem. In semper, leo vel aliquet dignissim, risus libero aliquet mauris, id vestibulum odio mi at magna. Donec malesuada magna ac nunc fringilla fringilla. Sed sodales ultrices massa, a luctus velit bibendum at. Duis eu ipsum eget nibh bibendum placerat vel ut eros. Sed gravida sapien a eros lobortis feugiat. Aliquam eu sapien mauris. Duis eget ex aliquam, maximus magna in, auctor odio. Suspendisse potenti.</p>
+		</div>
+	  </section>
 </Layout>
