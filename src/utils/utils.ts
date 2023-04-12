@@ -42,8 +42,6 @@ export function formatRelativeTime(fromDate, toDate) {
   return fromDate.toLocaleDateString(LOCALE);
 }
 
-
-
 export function getAssetURL(id: string) {
     if (!id) return null;
     // const directus = await getDirectusClient();

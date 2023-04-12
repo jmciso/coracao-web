@@ -1,10 +1,10 @@
 ---
 import MoreArticles from '../../components/MoreArticles.astro'
 import BackIcon from '../../components/icons/Back.astro'
-import YoutubeIcon from '../../components/icons/Youtube.astro'
-import TwitterIcon from '../../components/icons/Twitter.astro'
 import { getDirectusClient, getAssetURL, formatRelativeTime } from '../../utils/utils'
 import Layout from '../../layouts/Layout.astro'
+import Link from '../../components/icons/Link.astro'
+import Telegram from '../../components/icons/Telegram.astro'
 
 export async function getStaticPaths() {
   const directus = await getDirectusClient();
@@ -51,6 +51,7 @@ export async function getStaticPaths() {
   return articles
 }
 const { article } = Astro.props
+const currentPath = Astro.url.pathname;
 ---
 
     <Layout>
@@ -86,18 +87,13 @@ const { article } = Astro.props
               <div class="current-article__bodyContent" set:html={article.content}></div>
               <ul class="current-article__bodySocials">
                 <li>
-                  <a href="https://www.youtube.com/c/DirectusVideos" target="_blank" rel="noreferrer noopener">
-                    <YoutubeIcon />
+                  <a href={currentPath} target="_blank" rel="noreferrer noopener">
+                    <Link />
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/company/directus-io" target="_blank" rel="noreferrer noopener">
-                    <LinkedinIcon />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/directus" target="_blank" rel="noreferrer noopener">
-                    <TwitterIcon />
+                  <a href="https://t.me/+Dd4hO8FnzB00MDdk" target="_blank" rel="noreferrer noopener">
+                    <Telegram />
                   </a>
                 </li>
               </ul>

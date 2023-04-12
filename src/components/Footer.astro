@@ -1,32 +1,42 @@
 ---
-import GithubIcon from './icons/Github.astro'
-import YoutubeIcon from './icons/Youtube.astro'
-import TwitterIcon from './icons/Twitter.astro'
+import SubcribeFooter from './SubcribeFooter.astro';
+import Telegram from './icons/Telegram.astro';
+import Email from './icons/Email.astro';
 
 const currentYear = new Date().getFullYear()
 ---
 
 <footer>
   <div class="container footer__bottomWrapper">
-    <span class="footer__copyright">
-      © { currentYear } Casa Coração
-    </span>
-    <!-- <ul class="footer__socials">
-      <li>
-        <a href="https://github.com/directus" class="logo" target="_blank" rel="noreferrer noopener">
-          <GithubIcon />
-        </a>
-      </li>
-      <li>
-        <a href="https://www.youtube.com/c/DirectusVideos" class="logo" target="_blank" rel="noreferrer noopener">
-          <YoutubeIcon />
-        </a>
-      </li>
-      <li>
-        <a href="https://twitter.com/directus" class="logo" target="_blank" rel="noreferrer noopener">
-          <TwitterIcon />
-        </a>
-      </li>
-    </ul> -->
+    <section class="w-full">
+      <SubcribeFooter></SubcribeFooter>
+    </section>
+    <section class="flex justify-between w-full">
+      <ul class="footer__socials">
+        <li>
+          <a href="https://t.me/+Dd4hO8FnzB00MDdk" class="logo" target="_blank" rel="noreferrer noopener">
+            <Telegram />
+          </a>
+        </li>
+        <li>
+          <a href="mailto:casa-coracao@proton.me" class="logo" target="_blank" rel="noreferrer noopener">
+            <Email />
+          </a>
+        </li>
+        <!-- <li>
+          <a href="https://twitter.com/directus" class="logo" target="_blank" rel="noreferrer noopener">
+            <TwitterIcon />
+          </a>
+        </li> -->
+      </ul>
+      <span class="footer__copyright">
+        © { currentYear } Casa Coração
+      </span>
+    </section>
+    <!-- <section>
+      <span class="footer__copyright">
+        © { currentYear } Casa Coração
+      </span>
+    </section> -->
   </div>
 </footer>
