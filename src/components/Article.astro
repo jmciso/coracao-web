@@ -8,7 +8,7 @@ const { article, bordered } = Astro.props
     <div class="article__imageWrapper">
       <img src={getAssetURL(article.front_img)} alt="" loading="lazy" />
     </div>
-    <span aria-hidden="true" class="tag">{article.topics.join(" ")}</span>
+    <span aria-hidden="true" class="tag">{article.topics?.join(" ")}</span>
   </div>
   <div class="article__bottomWrapper">
     <h1 class="article__title">
