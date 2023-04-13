@@ -2,7 +2,7 @@
 import Article from '../components/Article.astro'
 const { articles } = Astro.props
 ---
-
+{articles && articles.length &&
 <section class="more-articles">
   <div class="container">
     <h1 class="more-articles__title">Mais Artigos</h1>
@@ -15,3 +15,4 @@ const { articles } = Astro.props
     )}
   </div>
 </section>
+}

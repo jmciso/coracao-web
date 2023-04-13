@@ -1,63 +1,84 @@
 ---
-// import 'modern-normalize'
-import '../stylesheet/main.css'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
+import "../stylesheet/main.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
-const { title } = Astro.props
+const { title, meta } = Astro.props;
 ---
 
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={meta} />
+    <title>Casa Coração</title>
+    <link rel="shortcut icon" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chonburi&family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- MailerLite Universal -->
+    <script>
+      (function (w, d, e, u, f, l, n) {
+        (w[f] =
+          w[f] ||
+          function () {
+            (w[f].q = w[f].q || []).push(arguments);
+          }),
+          (l = d.createElement(e)),
+          (l.async = 1),
+          (l.src = u),
+          (n = d.getElementsByTagName(e)[0]),
+          n.parentNode.insertBefore(l, n);
+      })(
+        window,
+        document,
+        "script",
+        "https://assets.mailerlite.com/js/universal.js",
+        "ml"
+      );
+      ml("account", "379681");
+    </script>
+    <!-- End MailerLite Universal -->
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Casa Coração</title>
-  <link rel="shortcut icon" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Major+Mono+Display&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" /> -->
-  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" /> -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- MailerLite Universal -->
-<script>
-  (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-  .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-  n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-  (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-  ml('account', '379681');
-</script>
-<!-- End MailerLite Universal -->
-</head>
-
-<body class="layout">
-  <Header />
-  <main class="container">
-    <section>
-      <h1 class="text-center page-title">{title}</h1>
+  <body class="layout">
+    <Header />
+    <main class="container">
+      <section>
+        <h1 class="text-center page-title">{title}</h1>
       </section>
-
-  </main>
-  <slot></slot>
-  <Footer />
-</body>
-<style is:global>
-  main {
-		/* margin: auto; */
-		/* padding: 1.5rem; */
-		/* max-width: 60ch; */
-	}
-  .page-title {
-    font-family: var(--family-sans-serif);
-    font-size: 32px;
-    text-transform: uppercase;
-    letter-spacing: 12px;
-    line-height: 60px;
-    color: #cc5549;
-    color: var(--foreground-subdued);
-    margin-bottom: 15px;
-  }
-</style>
+    </main>
+    <slot />
+    <Footer />
+  </body>
+  <style is:global>
+    main {
+      /* margin: auto; */
+      /* padding: 1.5rem; */
+      /* max-width: 60ch; */
+    }
+    .page-title {
+      font-family: var(--family-sans-serif);
+      font-size: 32px;
+      text-transform: uppercase;
+      letter-spacing: 12px;
+      line-height: 60px;
+      color: #cc5549;
+      color: var(--foreground-subdued);
+      margin-bottom: 15px;
+    }
+  </style>
 </html>

@@ -813,11 +813,11 @@
     padding-right: 0;
   }
   
-  @media (min-width: 640px) {
+  /* @media (min-width: 640px) {
     .current-article__bodyContent {
       padding-right: 200px;
     }
-  }
+  } */
   
   .current-article__body p {
     margin-bottom: 1.5rem;

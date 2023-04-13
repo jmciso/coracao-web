@@ -3,8 +3,6 @@ import MoreArticles from '../../components/MoreArticles.astro'
 import BackIcon from '../../components/icons/Back.astro'
 import { getDirectusClient, getAssetURL, formatRelativeTime } from '../../utils/utils'
 import Layout from '../../layouts/Layout.astro'
-import Link from '../../components/icons/Link.astro'
-import Telegram from '../../components/icons/Telegram.astro'
 
 export async function getStaticPaths() {
   const directus = await getDirectusClient();
@@ -51,7 +49,6 @@ export async function getStaticPaths() {
   return articles
 }
 const { article } = Astro.props
-const currentPath = Astro.url.pathname;
 ---
 
     <Layout>
@@ -62,7 +59,7 @@ const currentPath = Astro.url.pathname;
               <BackIcon />
               <span>Voltar</span>
             </a>
-            <h1 class="current-article__title">{article.title}</h1>
+            <h1 class="current-article__title text-center">{article.title}</h1>
             <div class="current-article__detail">
               <div class="current-article__wrapperOuter">
                 <div class="current-article__wrapperInner">
@@ -71,7 +68,8 @@ const currentPath = Astro.url.pathname;
                   </div>
                   <div>
                     <div class="current-article__authorName">
-                      {`${article.user_created?.first_name} ${article.user_created?.last_name}`}
+                      HML
+                      <!-- {`${article.user_created?.first_name} ${article.user_created?.last_name}`} -->
                     </div>
                     <div class="current-article__time">
                       {article.publish_date}
@@ -85,7 +83,7 @@ const currentPath = Astro.url.pathname;
             </div>
             <div class="current-article__body">
               <div class="current-article__bodyContent" set:html={article.content}></div>
-              <ul class="current-article__bodySocials">
+              <!-- <ul class="current-article__bodySocials">
                 <li>
                   <a href={currentPath} target="_blank" rel="noreferrer noopener">
                     <Link />
@@ -96,7 +94,7 @@ const currentPath = Astro.url.pathname;
                     <Telegram />
                   </a>
                 </li>
-              </ul>
+              </ul> -->
             </div>
           </div>
         </section>

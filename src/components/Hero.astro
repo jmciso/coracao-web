@@ -23,7 +23,8 @@ const { article } = Astro.props
   }
     <div>
       <div class="hero__detailAuthorName">
-        {`${article.user_created?.first_name} ${article.user_created?.last_name}`}
+        HML
+        <!-- {`${article.user_created?.first_name} ${article.user_created?.last_name}`} -->
       </div>
       <div>{article.publish_date}</div>
       {article.topics && <div class="hero__detailCategory">{article.topics?.join(" ")}</div> }

@@ -2,9 +2,14 @@
 import Email from "../components/icons/Email.astro";
 import Telegram from "../components/icons/Telegram.astro";
 import Layout from "../layouts/Layout.astro";
+
+const meta = `
+Contactos Casa Coração. Gostavas de falar connosco ou de saber mais?
+								Envia-nos um email ou junta-te a nós no Telegram
+`
 ---
 
-<Layout title="Contactos">
+<Layout title="Contactos" meta={meta}>
 	<main>
 		<!-- <section
 			class="bg-cover bg-center w-full"
@@ -22,7 +27,7 @@ import Layout from "../layouts/Layout.astro";
 						style="max-height: 500px; overflow: hidden;"
 					>
 						<img
-							src="temazcal.jpg"
+							src="temazcal.webp"
 							alt="Contact Us"
 							class="w-full"
 						/>

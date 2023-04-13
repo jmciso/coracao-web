@@ -1,40 +1,64 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+
+const meta = `
+Trabalhos de mergulho e de celebração, nos quais trabalhamos o eixo horizontal entre o caminho do guerreiro e o caminho da beleza. 
+			São na maioria trabalhos que procuram ir buscar a melhor versão de ti.
+			Através de variadas técnicas, dinâmicas e círculos de partilhas chegamos ao entendimento, ao desbloqueio, à integração e à dissolução do que já não nos faz falta, do que não nos pertence. 
+			Abrindo assim caminho para que floresçam os teus dons e para que brilhem as melhores partes de ti.
+`;
 ---
 
-<Layout title="Retiros & Workshops">
+<Layout title="Retiros & Workshops" meta={meta}>
 	<section>
 		<div class="container mx-auto">
 			<!-- <div class="relative z-10 text-center">
 				<h2 class="text-4xl font-bold uppercase tracking-wide">Welcome to The House</h2>
 				<p class="mt-4 text-xl text-white">Learn about our mission and the history behind it.</p>
 			  </div> -->
-		  <div class="relative flex items-center justify-center overflow-hidden">
-			<!-- <video class="h-full object-cover" autoplay controls>
+			<div
+				class="relative flex items-center justify-center overflow-hidden"
+			>
+				<!-- <video class="h-full object-cover" autoplay controls>
 			  <source src="vids/retiros_workshops.mp4" type="video/mp4"> -->
-			  <!-- Add other video source types here -->
-			<!-- </video> -->
-			<div class="relative flex h-96 items-center justify-center overflow-hidden">
-				<iframe class="rumble" width="640" height="360" frameborder="0" allowfullscreen src="https://rumble.com/embed/v2cm7lu/?pub=1xe254"></iframe>
+				<!-- Add other video source types here -->
+				<!-- </video> -->
+				<div
+					class="relative flex h-96 items-center justify-center overflow-hidden"
+				>
+					<iframe
+						class="rumble"
+						width="640"
+						height="360"
+						frameborder="0"
+						allowfullscreen
+						src="https://rumble.com/embed/v2cm7lu/?pub=1xe254"
+					></iframe>
+				</div>
 			</div>
-		  </div>
 		</div>
-	  </section>
-	  <section class="py-10">
+	</section>
+	<section class="py-10">
 		<div class="container mx-auto">
-		  <!-- <h2 class="text-4xl font-bold mb-4">Círculos de Homens</h2> -->
-		  <p class="mb-4">
-			Trabalhos de mergulho e de celebração, nos quais trabalhamos o eixo horizontal entre o caminho do guerreiro e o caminho da beleza. 
-		  </p>
-		  <p class="mb-4">
-			São na maioria trabalhos que procuram ir buscar a melhor versão de ti.
-		  </p>
-		  <p class="mb-4">
-			Através de variadas técnicas, dinâmicas e círculos de partilhas chegamos ao entendimento, ao desbloqueio, à integração e à dissolução do que já não nos faz falta, do que não nos pertence. 
+			<!-- <h2 class="text-4xl font-bold mb-4">Círculos de Homens</h2> -->
+			<p class="mb-4">
+				Trabalhos de mergulho e de celebração, nos quais trabalhamos o
+				eixo horizontal entre o caminho do guerreiro e o caminho da
+				beleza.
 			</p>
-		  <p class="mb-4">
-			Abrindo assim caminho para que floresçam os teus dons e para que brilhem as melhores partes de ti.
+			<p class="mb-4">
+				São na maioria trabalhos que procuram ir buscar a melhor versão
+				de ti.
+			</p>
+			<p class="mb-4">
+				Através de variadas técnicas, dinâmicas e círculos de partilhas
+				chegamos ao entendimento, ao desbloqueio, à integração e à
+				dissolução do que já não nos faz falta, do que não nos pertence.
+			</p>
+			<p class="mb-4">
+				Abrindo assim caminho para que floresçam os teus dons e para que
+				brilhem as melhores partes de ti.
 			</p>
 		</div>
-	  </section>
+	</section>
 </Layout>

@@ -17,9 +17,10 @@ const formattedArticles = response?.data.map((article) => {
   }
 })
 const [hero, ...articles] = formattedArticles
+const meta = "Blog da casa coração. Terapias, workshops e retiros."
 ---
 
-<Layout title="Blog">
+<Layout title="Blog" meta={meta}>
 		<section class="main-content">
 		  <div class="container">
 			<Hero article={hero} />
