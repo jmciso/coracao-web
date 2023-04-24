@@ -1,0 +1,34 @@
+---
+import { getAssetURL } from "../utils/utils";
+
+const { event } = Astro.props
+---
+<!-- {article && -->
+<article class="hero">
+  <div class="hero__topWrapper">
+    <div class="hero__imageWrapper">
+      <img src={getAssetURL(event.front_img)} alt="" loading="lazy" />
+    </div>
+    {event.topics && <span aria-hidden="true" class="tag">{event.topics?.join(" ")}</span>}
+  </div>
+  <h1 class="hero__title">
+    <a href={`/events/${event.id}`}>{event.title}</a>
+  </h1>
+  <p class="hero__excerpt">{event.abstract}</p>
+  <div class="hero__detail">
+    { event.user_created?.avatar &&
+    <div class="hero__detailAuthorImage">
+      <img src={getAssetURL(event.user_created?.avatar)} alt="" loading="lazy" />
+    </div>
+  }
+    <div>
+      <div class="hero__detailAuthorName">
+        HML
+        <!-- {`${article.user_created?.first_name} ${article.user_created?.last_name}`} -->
+      </div>
+      <!-- <div>{event.publish_date}</div> -->
+      {event.topics && <div class="hero__detailCategory">{event.topics?.join(" ")}</div> }
+    </div>
+  </div>
+</article>
+<!-- } -->

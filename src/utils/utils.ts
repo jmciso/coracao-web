@@ -1,5 +1,11 @@
 import { Directus } from "@directus/sdk";
 
+export const locale = 'pt-PT';
+export const timeOpts = {
+	dateStyle: 'long',
+	// timeStyle: 'short'
+};
+
 export const getDirectusClient = async () => {
   const directus = new Directus(import.meta.env.PUBLIC_API_URL);
   const authToken = await directus.auth.token; 

@@ -1,0 +1,15 @@
+---
+
+const {name} = Astro.props;
+---
+
+<div class="bg-white rounded-md shadow-md p-6">
+    <blockquote class="font-medium text-gray-800 text-lg mb-4">
+        <slot></slot>
+        <!-- "{description}" -->
+      <!-- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget vestibulum ipsum, a lobortis lorem. Sed euismod ut nisi vitae bibendum. Vestibulum eu magna ac ante aliquam consequat." -->
+    </blockquote>
+    <p class="text-gray-800 text-lg font-bold mb-4">{name}</p>
+    <!-- <p class="text-gray-600 text-xs">Happy Customer</p> -->
+  </div>
+  

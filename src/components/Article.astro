@@ -1,7 +1,6 @@
 ---
 import { getAssetURL } from '../utils/utils'
 const { article, bordered } = Astro.props
-debugger
 ---
 
 <article class={bordered ? 'article bordered' : 'article' }>
@@ -9,7 +8,7 @@ debugger
     <div class="article__imageWrapper">
       <img src={getAssetURL(article.front_img)} alt="" loading="lazy" />
     </div>
-    <span aria-hidden="true" class="tag">{article.topics?.join(" ")}</span>
+    {article.topics && <span aria-hidden="true" class="tag">{article.topics?.join(" ")}</span>}
   </div>
   <div class="article__bottomWrapper">
     <h1 class="article__title">
@@ -27,7 +26,7 @@ debugger
           <!-- {`${article.user_created?.first_name} ${article.user_created?.last_name}`} -->
         </div>
         <div class="article__detailInnerTime">{article.publish_date}</div>
-        <div class="article__detailInnerCategory">{article.topics.join(" ")}</div>
+        {article.topics && <div class="article__detailInnerCategory">{article.topics.join(" ")}</div>}
       </div>
     </div>
   </div>

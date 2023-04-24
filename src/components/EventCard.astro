@@ -1,0 +1,29 @@
+---
+import { getAssetURL } from "../utils/utils";
+import CTA from '../components/CTA.astro';
+
+const {event} = Astro.props;
+console.log(event)
+---
+
+    <div class="overflow-hidden cta">
+        <img
+            class="w-full h-48 object-cover"
+            src={getAssetURL(event.front_img)}
+            alt={event.title}
+        />
+        <div class="py-4 px-6 flex flex-col" style="min-height: 150px;">
+            <h3 class="text-lg font-bold mb-2">{event.title}</h3>
+            <p class="text-gray-600 text-sm grow shrink-0">
+                {event.subtitle}
+            </p>
+            <CTA href={'/events/'+event.id}></CTA>
+        </div>
+    </div>
+
+    <style>
+        .cta {
+            border: 1px solid var(--foreground-subdued);
+            padding: 16px;
+        }
+    </style>

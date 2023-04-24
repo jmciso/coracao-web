@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Testimonial from '../components/Testimonial.astro';
 
 const metaDesc = "Hugo Muacho da Luz, o Coração por trás da Casa. Convido-te a conhecer-me um pouco mais. Falo do meu percurso como Homem, formador e terapeuta. Dou a conhecer os momentos mais marcantes da minha vida e que acabaram por forjar e definir o meu ser. Um resumo de mais de 15 anos de caminho rumo ao meu centro."
 ---
@@ -22,7 +23,7 @@ const metaDesc = "Hugo Muacho da Luz, o Coração por trás da Casa. Convido-te 
 		  </div>
 		</div>
 	  </section>
-	  <section class="py-20">
+	  <section class="py-10">
 		<div class="container mx-auto">
 		  <!-- <h2 class="text-4xl font-bold mb-4">Círculos de Homens</h2> -->
 		  <p class="mb-4">
@@ -30,5 +31,12 @@ const metaDesc = "Hugo Muacho da Luz, o Coração por trás da Casa. Convido-te 
 		  </p>
 		</div>
 	  </section>
-
+	  <section class="pb-10">
+		<div class="container grid grid-cols-1-2 gap-8">
+			<h2 class="text-3xl lg:text-4xl font-bold mb-8 text-center">Testemunhos</h2>
+			<Testimonial name="Bárbara Couto">
+				"Já contactei com muitos professores e mestres, mas <span class="font-bold text-2xl">tenho um lugar especial para o Hugo que é um professor real, humilde e fraterno.</span> É reto na palavra e na ação, o que me traz uma enorme segurança e confiança a cada retiro.”				
+			</Testimonial>
+		  </div>
+	  </section>
 </Layout>

@@ -51,15 +51,15 @@ export async function getStaticPaths() {
 const { article } = Astro.props
 ---
 
-    <Layout>
+    <Layout title={article.title} meta={article.content}>
       <div class="current-article">
         <section>
-          <div class="container">
-            <a href="/" class="current-article__backlink">
-              <BackIcon />
-              <span>Voltar</span>
-            </a>
-            <h1 class="current-article__title text-center">{article.title}</h1>
+          <a href="/blog" class="current-article__backlink">
+            <BackIcon />
+            <span>Ver todos</span>
+          </a>
+          <div class="container ">
+            <!-- <h1 class="current-article__title text-center">{article.title}</h1> -->
             <div class="current-article__detail">
               <div class="current-article__wrapperOuter">
                 <div class="current-article__wrapperInner">
@@ -68,8 +68,7 @@ const { article } = Astro.props
                   </div>
                   <div>
                     <div class="current-article__authorName">
-                      HML
-                      <!-- {`${article.user_created?.first_name} ${article.user_created?.last_name}`} -->
+                      {`${article.user_created?.first_name} ${article.user_created?.last_name}`}
                     </div>
                     <div class="current-article__time">
                       {article.publish_date}
@@ -98,6 +97,7 @@ const { article } = Astro.props
             </div>
           </div>
         </section>
-        <MoreArticles articles={article.moreArticles} />
       </div>
+      <MoreArticles articles={article.moreArticles} />
     </Layout>
+

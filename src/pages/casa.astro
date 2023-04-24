@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Testimonial from '../components/Testimonial.astro';
 const meta = `
 Este projecto é o resultado de uma busca de uma vida inteira, uma busca para preencher um vazio que ia crescendo com o meu caminhar. Essa busca inconsciente levou-me à procura de entendimento, de respostas que de alguma forma preenchessem esse vazio que habitava o meu Coração.
 Uma longa peregrinação de mais de 15 anos dentro da vastidão do meu ser, que tantas coisas boas trouxe à minha vida que senti necessidade de alguma forma retribuir ao Grande Espírito, à Grande Mãe, toda a abundância que me chegou. Em 2011 comecei um caminho de serviço, onde naveguei por muitas escolas, práticas e técnicas de desenvolvimento pessoal, das quais se destaca como base sólida do meu trabalho a prática do Xamanismo. O Xamanismo e o estudo dos seus arquétipos são a força motora do trabalho aqui desenvolvido.
@@ -26,7 +27,7 @@ Aho!, por todas as nossa relações!
 		  </div>
 		</div>
 	  </section>
-	  <section class="py-20">
+	  <section class="py-10">
 		<div class="container mx-auto">
 		  <!-- <h2 class="text-4xl font-bold mb-4">Círculos de Homens</h2> -->
 		  <p class="mb-4">
@@ -42,5 +43,14 @@ Aho!, por todas as nossa relações!
 			Aho!, por todas as nossa relações!
 		  </p>
 		</div>
+	  </section>
+	  <section class="pb-10">
+		<div class="container grid grid-cols-1-2 gap-8">
+			<h2 class="text-3xl lg:text-4xl font-bold mb-8 text-center">Testemunhos</h2>
+			<Testimonial name="Carla Silva">
+				"<span class="font-bold text-2xl">A Casa Coração é o meu berço! É um berço de novos seres humanos</span>  que não sendo novos são os mesmos renovados, mais atentos, mais focados, mais limpos de dores e de traumas e com mais vontade de viver.   
+				Morri e renasci na Casa Coração imensas vezes. Aprendi muito em todos os processos que fiz, em todos os momentos que lá passei, tive uma aprendizagem constante e posso dizer que sendo o meu berço, é o lugar onde eu morro e renasço de coração ainda mais aberto, mais pronto e ainda mais pleno de Amor.”				
+			</Testimonial>
+		  </div>
 	  </section>
 </Layout>

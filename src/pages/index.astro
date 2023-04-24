@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import CTA from "../components/CTA.astro";
+import Testimonial from "../components/Testimonial.astro";
 const metaDesc = `A Casa Coração é o culminar de mais de 15 anos de caminho em direcção ao Grande Espírito. É a tradução da amálgama de experiência, cerimónias, formações, viagens, peregrinações e tempos de isolamento na montanha. É o refinar do que melhor posso oferecer através das minhas experiências, através do que moldou a toda a fibra do meu Ser.
 Hugo Muacho da Luz, o Coração por trás da Casa.
 A missão primordial da Casa Coração é o resgate da criança Interior.  Através dos nossos trabalhos dissolver, integrar e libertar as partes feridas para que possas desbloquear todo o potencial do teu ser.
@@ -7,6 +9,7 @@ Verdade, Justiça, Coerência e Compaixão são os pilares e valores que me guia
 Oferecemos um leque de terapias para te apoiar na tua jornada
 					pessoal de cura e descoberta.
 `
+
 ---
 
 <Layout meta={metaDesc}>
@@ -99,7 +102,7 @@ Oferecemos um leque de terapias para te apoiar na tua jornada
 			</div>
 			<div class="text-center w-full pt-20 pb-10">
 
-				<a href="/casa" class="bg-white font-bold rounded py-4 px-8 uppercase tracking-wider text-gray-700 hover:text-black">Saber Mais</a>
+				<a href="/casa" class="button_call-action-dark font-bold rounded py-4 px-8 uppercase tracking-wider text-white hover:text-black">Saber Mais</a>
 			</div>
 
 		</div>
@@ -122,8 +125,8 @@ Oferecemos um leque de terapias para te apoiar na tua jornada
 	</section>
 	<section class="py-20">
 		<div class="container mx-auto px-4">
-			<div class="mb-10">
-				<h2 class="text-3xl font-bold mb-4">As nossas Propostas</h2>
+			<div class="mb-10 lg:text-center">
+				<h2 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl">As nossas Propostas</h2>
 				<p class="text-gray-600">
 					Oferecemos um leque de terapias para te apoiar na tua jornada
 					pessoal de cura e descoberta.
@@ -136,18 +139,12 @@ Oferecemos um leque de terapias para te apoiar na tua jornada
 						src="servicos/oliveira.webp"
 						alt="Terapias"
 					/>
-					<div class="py-4 px-6">
+					<div class="py-4 px-6 flex flex-col" style="min-height: 250px;">
 						<h3 class="text-lg font-bold mb-2">Terapias</h3>
-						<p class="text-gray-600 text-sm">
+						<p class="text-gray-600 text-sm grow shrink-0">
 							Terapias online ou presenciais, com objectivos próprios e adaptados às tuas necessidades individuais.
 						</p>
-						<div class="m-5">
-						<a
-							href="/therapies"
-							class="button_call-action-dark text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline"
-							>Saber Mais</a
-						>
-						</div>
+						<CTA href={'/therapies'}></CTA>
 					</div>
 				</div>
 				<div class="bg-white shadow-lg rounded-lg overflow-hidden">
@@ -156,17 +153,12 @@ Oferecemos um leque de terapias para te apoiar na tua jornada
 						src="servicos/altar.webp"
 						alt="Retiros & Workshops"
 					/>
-					<div class="py-4 px-6">
+					<div class="py-4 px-6 flex flex-col" style="min-height: 250px;">
 						<h3 class="text-lg font-bold mb-2">Retiros & Workshops</h3>
-						<p class="text-gray-600 text-sm">
+						<p class="text-gray-600 text-sm grow shrink-0">
 							Trabalhos de mergulho e de celebração, nos quais trabalhamos o eixo horizontal entre o caminho do guerreiro e o caminho da beleza.
 						</p>
-						<div class="m-5">
-							<a
-								href="/workshops"
-								class="button_call-action-dark text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline"
-							>Saber Mais</a>
-						</div>
+						<CTA href={'/workshops'}></CTA>
 					</div>
 				</div>
 				<div class="bg-white shadow-lg rounded-lg overflow-hidden">
@@ -175,23 +167,31 @@ Oferecemos um leque de terapias para te apoiar na tua jornada
 						src="servicos/fogo.webp"
 						alt="Homem Solar"
 					/>
-					<div class="py-4 px-6">
+					<div class="py-4 px-6 flex flex-col" style="min-height: 250px;">
 						<h3 class="text-lg font-bold mb-2">Homem Solar</h3>
-						<p class="text-gray-600 text-sm">
+						<p class="text-gray-600 text-sm grow shrink-0">
 							O  Objetivo deste trabalho é dar aos homens uma maior capacidade de entendimento emocional através da cura dos Arquétipos do Sol e da Lua.
 						</p>
-						<div class="m-5">
-							<a
-								href="/solar-man"
-								class="button_call-action-dark text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline"
-								>Saber Mais</a
-							>
-						</div>
+						<CTA href={'/solar-man'}></CTA>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<section class="pb-12">
+		<div class="max-w-5xl mx-auto px-6 lg:px-0">
+		  <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-center">Testemunhos</h2>
+		  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+			<Testimonial name="Bárbara Couto">
+				"<span class="font-bold text-2xl">As terras da Casa Coração têm uma magia ímpar</span>  que se começa a sentir a kms de distância, são terras mágicas e abençoadas, autêntico portal de cura."
+			</Testimonial>
+			<Testimonial name="João Mendes">
+				"<span class="font-bold text-2xl">O Coração palpita ao relembrar tudo aquilo que tenho vivido na companhia, presença e suporte deste querido irmão Hugo Luz</span> e da magia e poder que me acolhe na Casa Coração e a quem aqui chega. Bem hajas Hugo, Gratidão Casa Coração!"
+			</Testimonial>
+		  </div>
+		</div>
+	  </section>
+	  
 </Layout>
 
 <style>
