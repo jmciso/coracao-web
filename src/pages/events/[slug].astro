@@ -50,52 +50,27 @@ export async function getStaticPaths() {
 }
 const { event } = Astro.props
 ---
-<Layout>
+<Layout title={event.title} meta={event.description}>
     <div class="current-article">
-      <section>
+      <section class="mb-10">
         <a href="/events" class="current-article__backlink">
           <BackIcon />
           <span>Ver todos</span>
         </a>
         <div class="container">
-          <h1 class="current-article__title text-center">{event.title}</h1>
+          <!-- <h1 class="current-article__title text-center">{event.title}</h1> -->
           <div class="current-article__detail">
-            <div class="current-article__wrapperOuter">
-              <div class="current-article__wrapperInner">
-                <div class="current-article__authorImage">
-                  <img src={getAssetURL(event.user_created?.avatar)} alt="" loading="lazy" />
-                </div>
-                <div>
-                  <div class="current-article__authorName">
-                    {`${event.user_created?.first_name} ${event.user_created?.last_name}`}
-                  </div>
-                  <div class="current-article__time">
-                    Datas: {event.start} a {event.end}
-                  </div>
-                </div>
-              </div>
-            </div>
             <div class="current-article_coverImage">
               <img src={getAssetURL(event.front_img)} alt="" />
             </div>
           </div>
+          <h3 class="text-lg font-bold mb-2">
+            Datas: {event.start} a {event.end}
+          </h3>
           <div class="current-article__body">
             <div class="current-article__bodyContent" set:html={event.description}></div>
-            <!-- <ul class="current-article__bodySocials">
-              <li>
-                <a href={currentPath} target="_blank" rel="noreferrer noopener">
-                  <Link />
-                </a>
-              </li>
-              <li>
-                <a href="https://t.me/+Dd4hO8FnzB00MDdk" target="_blank" rel="noreferrer noopener">
-                  <Telegram />
-                </a>
-              </li>
-            </ul> -->
           </div>
         </div>
       </section>
-      <MoreArticles articles={event.moreArticles} />
     </div>
   </Layout>
