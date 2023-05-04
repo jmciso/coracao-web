@@ -1,7 +1,7 @@
 ---
 import EventCard from '../components/EventCard.astro';
 import Layout from '../layouts/Layout.astro';
-import { getDirectusClient, locale, timeOpts } from '../utils/utils';
+import { formatDate, getDirectusClient } from '../utils/utils';
 
 const directus = await getDirectusClient()
 const response = await directus.items("events").readByQuery({
@@ -13,8 +13,8 @@ const response = await directus.items("events").readByQuery({
 const formattedEvents = response?.data.map((event) => {
   return {
     ...event,
-	start: new Date(event.start).toLocaleString(locale, timeOpts),
-    end: new Date(event.end).toLocaleString(locale, timeOpts)
+	start: formatDate(event.start),
+    end: formatDate(event.end)
   }
 })
 const [topEvent, ...otherEvents] = formattedEvents;

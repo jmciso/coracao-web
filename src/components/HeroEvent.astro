@@ -23,8 +23,7 @@ const { event } = Astro.props
   }
     <div>
       <div class="hero__detailAuthorName">
-        HML
-        <!-- {`${article.user_created?.first_name} ${article.user_created?.last_name}`} -->
+        {`${article.user_created?.first_name} ${article.user_created?.last_name}`}
       </div>
       <!-- <div>{event.publish_date}</div> -->
       {event.topics && <div class="hero__detailCategory">{event.topics?.join(" ")}</div> }

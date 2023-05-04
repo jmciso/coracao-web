@@ -22,8 +22,7 @@ const { article, bordered } = Astro.props
       </div>
       <div class="article__detailInner">
         <div class="article__detailInnerAuthor">
-          HML
-          <!-- {`${article.user_created?.first_name} ${article.user_created?.last_name}`} -->
+          {`${article.user_created?.first_name} ${article.user_created?.last_name}`}
         </div>
         <div class="article__detailInnerTime">{article.publish_date}</div>
         {article.topics && <div class="article__detailInnerCategory">{article.topics.join(" ")}</div>}

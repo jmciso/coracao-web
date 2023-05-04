@@ -1,7 +1,6 @@
 ---
-import MoreArticles from '../../components/MoreArticles.astro'
 import BackIcon from '../../components/icons/Back.astro'
-import { getDirectusClient, getAssetURL, formatRelativeTime, locale, timeOpts } from '../../utils/utils'
+import { getDirectusClient, getAssetURL, formatDate } from '../../utils/utils'
 import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
@@ -27,8 +26,8 @@ export async function getStaticPaths() {
       (formattedMoreEvents) => {
         return {
           ...formattedMoreEvents,
-          start: new Date(event.start).toLocaleString(locale, timeOpts),
-          end: new Date(event.end).toLocaleString(locale, timeOpts)
+          start: formatDate(event.start),
+          end: formatDate(event.end)
         }
       }
     )
@@ -38,8 +37,8 @@ export async function getStaticPaths() {
       props: {
         event: {
           ...event,
-          start: new Date(event.start).toLocaleString(locale, timeOpts),
-          end: new Date(event.end).toLocaleString(locale, timeOpts),
+          start: formatDate(event.start),
+          end: formatDate(event.end),
           moreEvents: formattedMoreEvents,
         }
       }
@@ -65,7 +64,7 @@ const { event } = Astro.props
             </div>
           </div>
           <h3 class="text-lg font-bold mb-2">
-            Datas: {event.start} a {event.end}
+            De {event.start} a {event.end}
           </h3>
           <div class="current-article__body">
             <div class="current-article__bodyContent" set:html={event.description}></div>

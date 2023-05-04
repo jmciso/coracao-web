@@ -2,7 +2,7 @@
 import Article from '../components/Article.astro';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
-import { formatRelativeTime, getDirectusClient } from '../utils/utils';
+import { formatDate, getDirectusClient } from '../utils/utils';
 
 const directus = await getDirectusClient()
 const response = await directus.items("articles").readByQuery({
@@ -13,7 +13,7 @@ const response = await directus.items("articles").readByQuery({
 const formattedArticles = response?.data.map((article) => {
   return {
     ...article,
-    publish_date: formatRelativeTime(new Date(article.publish_date)),
+    publish_date: formatDate(article.publish_date),
   }
 })
 const [hero, ...articles] = formattedArticles

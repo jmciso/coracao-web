@@ -1,7 +1,7 @@
 ---
 import MoreArticles from '../../components/MoreArticles.astro'
 import BackIcon from '../../components/icons/Back.astro'
-import { getDirectusClient, getAssetURL, formatRelativeTime } from '../../utils/utils'
+import { getDirectusClient, getAssetURL, formatDate } from '../../utils/utils'
 import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
@@ -27,8 +27,8 @@ export async function getStaticPaths() {
       (formattedMoreArticle) => {
         return {
           ...formattedMoreArticle,
-          publish_date: formatRelativeTime(
-            new Date(formattedMoreArticle.publish_date)
+          publish_date: formatDate(
+            formattedMoreArticle.publish_date
           ),
         }
       }
@@ -39,7 +39,7 @@ export async function getStaticPaths() {
       props: {
         article: {
           ...article,
-          publish_date: formatRelativeTime(new Date(article.publish_date)),
+          publish_date: formatDate(article.publish_date),
           moreArticles: formattedMoreArticles,
         }
       }
@@ -68,8 +68,7 @@ const { article } = Astro.props
                   </div>
                   <div>
                     <div class="current-article__authorName">
-                      HML
-                      <!-- {`${article.user_created?.first_name} ${article.user_created?.last_name}`} -->
+                      {`${article.user_created?.first_name} ${article.user_created?.last_name}`}
                     </div>
                     <div class="current-article__time">
                       {article.publish_date}

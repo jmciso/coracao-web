@@ -1,7 +1,7 @@
 import { Directus } from "@directus/sdk";
 
-export const locale = 'pt-PT';
-export const timeOpts = {
+const locale = 'pt-PT';
+const timeOpts = {
 	dateStyle: 'long',
 	// timeStyle: 'short'
 };
@@ -36,7 +36,7 @@ const LOCALE = "pt";
 
 const rtf = new Intl.RelativeTimeFormat(LOCALE, { numeric: "auto" });
 
-export function formatRelativeTime(fromDate, toDate) {
+function formatRelativeTime(fromDate, toDate) {
   const elapsed = fromDate - (toDate || new Date());
 
   // "Math.abs" accounts for both "past" & "future" scenarios
@@ -46,6 +46,10 @@ export function formatRelativeTime(fromDate, toDate) {
   }
 
   return fromDate.toLocaleDateString(LOCALE);
+}
+
+export function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleString(locale, timeOpts)
 }
 
 export function getAssetURL(id: string) {
