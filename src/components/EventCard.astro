@@ -4,7 +4,7 @@ import CTA from '../components/CTA.astro';
 
 const {event} = Astro.props;
 ---
-
+{ event != null &&
     <div class="overflow-hidden cta">
         <img
             class="w-full h-48 object-cover"
@@ -19,6 +19,7 @@ const {event} = Astro.props;
             <CTA href={'/events/'+event.id}></CTA>
         </div>
     </div>
+}
 
     <style>
         .cta {
