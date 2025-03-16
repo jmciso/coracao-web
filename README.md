@@ -1,50 +1,92 @@
-# Welcome to [Astro](https://astro.build)
+# Casa Coração Website
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/basics)
+A spiritual wellness center website built with Astro.js and Directus CMS.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🌟 Features
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+- 🚀 Built with Astro.js for fast performance
+- 📱 Responsive design with Tailwind CSS
+- 🗃️ Headless CMS integration with Directus
+- 🌍 Multi-language support (PT/EN)
+- 📝 Blog system with articles and events
+- 🎥 Video integration with Rumble
+- 📊 SEO optimized
 
+## 🛠️ Tech Stack
 
-## 🚀 Project Structure
+- [Astro.js](https://astro.build) - Web framework
+- [Tailwind CSS](https://tailwindcss.com) - Styling
+- [Directus](https://directus.io) - Headless CMS
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 16+
+- npm or yarn
+- Directus instance running
+
+### Environment Setup
+
+Create a `.env` file in the root directory:
+
+```env
+PUBLIC_DIRECTUS_URL=your_directus_url
+PUBLIC_DIRECTUS_TOKEN=your_directus_token
+```
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 📁 Project Structure
 
 ```
 /
-├── public/
-│   └── favicon.svg
+├── public/           # Static assets
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── components/   # Reusable UI components
+│   ├── layouts/     # Page layouts
+│   ├── pages/       # Route pages
+│   └── utils/       # Utility functions
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🔧 Configuration
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+The site can be configured by modifying:
 
-Any static assets, like images, can be placed in the `public/` directory.
+- `astro.config.mjs` - Astro configuration
+- `tailwind.config.cjs` - Tailwind CSS configuration
+- `src/utils/utils.ts` - Utility functions and API settings
 
-## 🧞 Commands
+## 📝 Content Management
 
-All commands are run from the root of the project, from a terminal:
+Content is managed through Directus CMS. Main collections:
 
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
+- Events
+- Blog Posts
+- Testimonials
+- Services
+- Pages
 
-## 👀 Want to learn more?
+## 🚀 Deployment
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The site is built as a static site and can be deployed to any static hosting platform.
+
+## 📫 Contact
+
+For questions and support, please contact [project maintainer](https://github.com/jmciso).

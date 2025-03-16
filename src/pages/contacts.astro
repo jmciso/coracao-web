@@ -3,96 +3,81 @@ import Email from "../components/icons/Email.astro";
 import Instagram from "../components/icons/Instagram.astro";
 import Telegram from "../components/icons/Telegram.astro";
 import Layout from "../layouts/Layout.astro";
+import CTA from "../components/CTA.astro";
 
-const meta = `
-Contactos Casa Coração. Gostavas de falar connosco ou de saber mais?
-								Envia-nos um email ou junta-te a nós no Telegram ou Instagram.
-`
+const meta = "Contactos Casa Coração";
+const keywords = "Casa Coração, Contactos, Email, Telegram, Instagram";
 ---
 
-<Layout title="Contactos" meta={meta}>
+<Layout title="Contactos" meta={meta} keywords={keywords}>
 	<main>
 		<section class="text-center">
 			<div class="container mx-auto px-4 py-8">
 				<div class="flex flex-wrap">
+					<div class="w-full md:w-1/2 p-4 flex flex-col justify-center">
+						<div class="mb-8">
+							<p class="mb-6 text-lg">
+								Gostavas de falar connosco ou de saber mais?
+								Envia-nos um email, junta-te a nós no Telegram ou segue-me no Instagram!
+							</p>
+							<div class="flex flex-col space-y-6">
+								<div class="flex items-center">
+									<div class="w-10 h-10 mr-4 flex items-center justify-center bg-green-100 rounded-full">
+										<Email class="w-6 h-6 text-green-700" />
+									</div>
+									<a
+										href="mailto:info@casa-coracao.com"
+										class="text-lg hover:text-green-700 transition-colors duration-300"
+										target="_blank"
+										rel="noreferrer noopener"
+									>
+										info@casa-coracao.com
+									</a>
+								</div>
+								<div class="flex items-center">
+									<div class="w-10 h-10 mr-4 flex items-center justify-center bg-green-100 rounded-full">
+										<Telegram class="w-6 h-6 text-green-700" />
+									</div>
+									<a
+										href="https://t.me/+Dd4hO8FnzB00MDdk"
+										class="text-lg hover:text-green-700 transition-colors duration-300"
+										target="_blank"
+										rel="noreferrer noopener"
+									>
+										Casa Coração
+									</a>
+								</div>
+								<div class="flex items-center">
+									<div class="w-10 h-10 mr-4 flex items-center justify-center bg-green-100 rounded-full">
+										<Instagram class="w-6 h-6 text-green-700" />
+									</div>
+									<a
+										href="https://www.instagram.com/hugo_muacho_luz/"
+										class="text-lg hover:text-green-700 transition-colors duration-300"
+										target="_blank"
+										rel="noreferrer noopener"
+									>
+										@hugo_muacho_luz
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="mt-8">
+							<p class="mb-6 text-lg">
+								Mantém-te a par dos nossos eventos
+							</p>
+							<CTA href={'/events'} description="Ver Eventos"></CTA>
+						</div>
+					</div>
 					<div
 						class="w-full rounded md:w-1/2 shadow-log"
 						style="max-height: 500px; overflow: hidden;"
 					>
 						<img
 							src="/temazcal.webp"
-							alt="Contact Us"
+							alt="Temazcal"
 							class="w-full"
 						/>
-					</div>
-					<div class="w-full md:w-1/2 p-4 flex flex-col justify-center">
-						<div class="">
-							<p class="mb-4">
-								Gostavas de falar connosco ou de saber mais?
-								Envia-nos um email ou junta-te a nós no Telegram
-							</p>
-							<div class="flex flex-col justify-center">
-								<div class="mr-8">
-									<div class="mx-auto w-8">
-										<a
-											href="mailto:info@casa-coracao.com"
-											target="_blank"
-											rel="noreferrer noopener"
-										>
-											<Email />
-										</a>
-									</div>
-									<p class="text-lg mb-4">
-										<a
-											href="mailto:info@casa-coracao.com"
-											class="text-blue-600"
-											target="_blank"
-											>info@casa-coracao.com</a
-										>
-									</p>
-								</div>
-								<div class="mr-8">
-									<div class="mx-auto w-8">
-										<a
-											href="https://t.me/+Dd4hO8FnzB00MDdk"
-											class=""
-											target="_blank"
-											rel="noreferrer noopener"
-										>
-											<Telegram />
-										</a>
-									</div>
-									<p class="text-lg mb-4">
-										<a
-											href="https://t.me/+Dd4hO8FnzB00MDdk"
-											class="text-blue-600"
-											target="_blank"
-											>Casa Coração</a
-										>
-									</p>
-								</div>
-								<div class="mr-8">
-									<div class="mx-auto w-8">
-										<a
-											href="https://www.instagram.com/hugo_muacho_luz/"
-											class=""
-											target="_blank"
-											rel="noreferrer noopener"
-										>
-											<Instagram />
-										</a>
-									</div>
-									<p class="text-lg mb-4">
-										<a
-											href="https://www.instagram.com/hugo_muacho_luz/"
-											target="_blank"
-											class="text-blue-600"
-											>@hugo_muacho_luz</a
-										>
-									</p>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

@@ -2,24 +2,39 @@
 import Layout from "../layouts/Layout.astro";
 import CTA from "../components/CTA.astro";
 import Testimonial from "../components/Testimonial.astro";
-const metaDesc = `A Casa Coração é o culminar de mais de 15 anos de caminho em direcção ao Grande Espírito. É a tradução da amálgama de experiência, cerimónias, formações, viagens, peregrinações e tempos de isolamento na montanha. É o refinar do que melhor posso oferecer através das minhas experiências, através do que moldou a toda a fibra do meu Ser.
-Hugo Muacho da Luz, o Coração por trás da Casa.
-A missão primordial da Casa Coração é o resgate da criança Interior.  Através dos nossos trabalhos dissolver, integrar e libertar as partes feridas para que possas desbloquear todo o potencial do teu ser.
-Verdade, Justiça, Coerência e Compaixão são os pilares e valores que me guiam. Rumo ao Centro, rumo ao Amor do nosso Coração.
-Oferecemos um leque de terapias para te apoiar na tua jornada
-					pessoal de cura e descoberta.
-`
+
+const metaDesc = "Casa Coração: Centro terapêutico dedicado ao desenvolvimento pessoal e espiritual. Oferecemos terapias, retiros, workshops e residências para o resgate da criança Interior. Localizado em Portugal."
+const keywords = "casa coração, terapias holísticas, retiros espirituais, workshops, xamanismo, desenvolvimento pessoal, cura interior, homem solar"
 
 ---
 
-<Layout meta={metaDesc}>
+<Layout meta={metaDesc} keywords={keywords}>
+  <!-- Add JSON-LD structured data -->
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Casa Coração",
+      "description": "Centro terapêutico dedicado ao desenvolvimento pessoal e espiritual. Oferecemos terapias, retiros, workshops e residências para o resgate da criança Interior.",
+      "url": "https://casa-coracao.com",
+      "logo": "https://casa-coracao.com/cc-logo.svg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "Portugal"
+      },
+      "sameAs": [
+        "https://www.instagram.com/hugo_muacho_luz/",
+        "https://t.me/+Dd4hO8FnzB00MDdk"
+      ]
+    }
+  </script>
 	<section
 		class="bg-cover bg-center w-full"
 		style="background-image: url('home-hero1.webp')"
 	>
 		<div class="container mx-auto pt-32 pb-40 px-4">
 			<div class="text-center text-white w-full md:w-2/3 lg:w-1/2 mx-auto">
-				<img src="/cc-home.svg" alt="Casa Coração" />
+				<img src="/cc-home.svg" alt="Casa Coração Logo" />
 			</div>
 		</div>
 	</section>
@@ -138,21 +153,23 @@ Oferecemos um leque de terapias para te apoiar na tua jornada
 					<img
 						class="w-full h-48 object-cover"
 						src="servicos/oliveira.webp"
-						alt="Terapias"
+						alt="Oliveira"
+						loading="lazy"
 					/>
 					<div class="py-4 px-6 flex flex-col" style="min-height: 250px;">
-						<h3 class="text-lg font-bold mb-2">Terapias</h3>
+						<h3 class="text-lg font-bold mb-2">Residências</h3>
 						<p class="text-gray-600 text-sm grow shrink-0">
-							Terapias online ou presenciais, com objectivos próprios e adaptados às tuas necessidades individuais.
+							Residências de 3 dias para ir mais fundo, com objectivos próprios e adaptados às tuas necessidades individuais.
 						</p>
-						<CTA href={'/therapies'}></CTA>
+						<CTA href={'/residencies'}></CTA>
 					</div>
 				</div>
 				<div class="bg-white shadow-lg rounded-lg overflow-hidden">
 					<img
 						class="w-full h-48 object-cover"
 						src="servicos/altar.webp"
-						alt="Retiros & Workshops"
+						alt="Altar"
+						loading="lazy"
 					/>
 					<div class="py-4 px-6 flex flex-col" style="min-height: 250px;">
 						<h3 class="text-lg font-bold mb-2">Retiros & Workshops</h3>
@@ -166,7 +183,8 @@ Oferecemos um leque de terapias para te apoiar na tua jornada
 					<img
 						class="w-full h-48 object-cover"
 						src="servicos/fogo.webp"
-						alt="Homem Solar"
+						alt="Fogueira"
+						loading="lazy"
 					/>
 					<div class="py-4 px-6 flex flex-col" style="min-height: 250px;">
 						<h3 class="text-lg font-bold mb-2">Homem Solar</h3>

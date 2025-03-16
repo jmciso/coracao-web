@@ -18,9 +18,40 @@ const formattedArticles = response?.data.map((article) => {
 })
 const [hero, ...articles] = formattedArticles
 const meta = "Blog da casa coração. Terapias, workshops e retiros."
+const keywords = "blog, terapias, workshops, retiros, casa coração";
+const blogUrl = "https://casa-coracao.com/blog";
 ---
 
-<Layout title="Blog" meta={meta}>
+<Layout title="Blog" meta={meta} keywords={keywords}>
+  <!-- Add JSON-LD structured data -->
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Blog Casa Coração",
+      "description": "Blog da casa coração. Terapias, workshops e retiros.",
+      "url": "https://casa-coracao.com/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Casa Coração",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://casa-coracao.com/cc-logo.svg"
+        }
+      },
+      "blogPost": {articles?.map(article => ({
+        "@type": "BlogPosting",
+        "headline": article.title,
+        "description": article.abstract,
+        "datePublished": article.publish_date,
+        "author": {
+          "@type": "Person",
+          "name": `${article.user_created?.first_name} ${article.user_created?.last_name}`
+        },
+        "url": `${blogUrl}/articles/${article.id}`
+      }))}
+    }
+  </script>
 		<section class="main-content">
 		  <div class="container">
 			<Hero article={hero} />
