@@ -1,0 +1,26 @@
+---
+import {getDirectusClient} from "../utils/utils";
+import Layout from "../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    const response = await (await getDirectusClient()).items("pages")
+        .readByQuery({
+            fields: ["*"],
+            filter: { status: { _eq: "published" } },
+            limit: -1,
+        });
+    const pages = response?.data;
+    return pages.map((page) => ({
+        params: { slug: page.slug },
+        props: page,
+    }));
+}
+const page = Astro.props;
+---
+
+<Layout title={page.title}>
+    <main>
+        <h1>{page.title}</h1>
+        <div set:html={page.content} />
+    </main>
+</Layout>

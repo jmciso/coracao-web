@@ -7,7 +7,7 @@ const directus = await getDirectusClient()
 const response = await directus.items("events").readByQuery({
   fields: ["*", "user_created", "user_created.first_name", "user_created.last_name"],
   filter: { status: { _eq: "published" } },
-  sort: "start",
+  sort: "-start",
 })
 
 const formattedEvents = response?.data.map((event) => {
@@ -19,9 +19,10 @@ const formattedEvents = response?.data.map((event) => {
 })
 const [topEvent, ...otherEvents] = formattedEvents;
 const meta = "Eventos da casa coração. Terapias, workshops e retiros."
+const keywords = "eventos, terapias, xamanismo, workshops, retiros, casa coração"; 
 ---
 
-<Layout title="Eventos" meta={meta}>
+<Layout title="Eventos" meta={meta} keywords={keywords}>
 		<section class="main-content">
 		  <div class="container">
 			<!-- <HeroEvent event={hero} /> -->

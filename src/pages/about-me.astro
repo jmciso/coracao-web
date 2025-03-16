@@ -2,10 +2,25 @@
 import Layout from '../layouts/Layout.astro';
 import Testimonial from '../components/Testimonial.astro';
 
-const metaDesc = "Hugo Muacho da Luz, o Coração por trás da Casa. Convido-te a conhecer-me um pouco mais. Falo do meu percurso como Homem, formador e terapeuta. Dou a conhecer os momentos mais marcantes da minha vida e que acabaram por forjar e definir o meu ser. Um resumo de mais de 15 anos de caminho rumo ao meu centro."
+const metaDesc = "Hugo Muacho da Luz, o Coração por trás da Casa."
+const keywords = "Hugo Muacho, Casa Coração, Terapeuta, Formador, Xamanismo, Testemunhos";
 ---
 
-<Layout title="Sobre Mim">
+<Layout title="Sobre Mim" meta={metaDesc} keywords={keywords}>
+  <!-- Add JSON-LD structured data -->
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Hugo Muacho da Luz",
+      "jobTitle": "Terapeuta e Formador",
+      "description": "Hugo Muacho da Luz, o Coração por trás da Casa. Terapeuta e formador com mais de 15 anos de experiência em desenvolvimento pessoal e xamanismo.",
+      "url": "https://casa-coracao.com/about-me",
+      "sameAs": [
+        "https://www.instagram.com/hugo_muacho_luz/"
+      ]
+    }
+  </script>
 	<section>
 		<div class="container mx-auto">
 			<!-- <div class="relative z-10 text-center">
