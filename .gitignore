@@ -2,6 +2,10 @@
 dist/
 .output/
 
+# IDE-specific files
+.vscode/
+.idea/
+
 # dependencies
 node_modules/
 
