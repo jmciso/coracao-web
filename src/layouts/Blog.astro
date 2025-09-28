@@ -1,7 +1,5 @@
 ---
 import Card from "../components/Card.astro";
-import Hero from "../components/solid/Hero";
-import ArticleList from "../components/solid/ArticleListComponent.jsx";
 import ArticleService from "../services/blog.service";
 
 const { title } = Astro.props;
@@ -24,7 +22,6 @@ const { title } = Astro.props;
                     <Card href="lol" body="isto é uma sinopse" title="titulo dois"></Card>
                     <Card href="lol" body="isto é uma sinopse" title="titulo tres"></Card>
                 </ul> -->
-                <Hero client:load></Hero>
             </div>
         </div>
     </div>
