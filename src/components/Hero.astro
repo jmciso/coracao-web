@@ -3,7 +3,6 @@ import { getAssetURL } from "../utils/utils";
 
 const { article } = Astro.props
 ---
-<!-- {article && -->
 <article class="hero">
   <div class="hero__topWrapper">
     <div class="hero__imageWrapper">
@@ -20,7 +19,7 @@ const { article } = Astro.props
     <div class="hero__detailAuthorImage">
       <img src={getAssetURL(article.user_created?.avatar)} alt="" loading="lazy" />
     </div>
-  }
+    }
     <div>
       <div class="hero__detailAuthorName">
         {`${article.user_created?.first_name} ${article.user_created?.last_name}`}
@@ -30,4 +29,3 @@ const { article } = Astro.props
     </div>
   </div>
 </article>
-<!-- } -->

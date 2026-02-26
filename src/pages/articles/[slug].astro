@@ -1,54 +1,54 @@
 ---
 import MoreArticles from '../../components/MoreArticles.astro'
 import BackIcon from '../../components/icons/Back.astro'
-import { getDirectusClient, getAssetURL, formatDate } from '../../utils/utils'
+import { getDirectusClient, getAssetURL, formatDate, readItems } from '../../utils/utils'
 import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
-  const directus = await getDirectusClient();
-  const response = await directus.items("articles").readByQuery({
-    fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
-    filter: { status: { _eq: "published" } },
-    limit: -1,
-  })
+  const directus = getDirectusClient();
 
-  let articles = response.data
-
-  for (const [index, article] of Object.entries(articles)) {
-    const moreArticlesResponse = await directus.items("articles").readByQuery({
+  const articles = await directus.request(
+    readItems("articles", {
       fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
-      filter: {
-        _and: [{ id: { _neq: article.id } }, { status: { _eq: "published" } }],
-      },
-      limit: 2,
+      filter: { status: { _eq: "published" } },
+      limit: -1,
     })
+  );
 
-    const formattedMoreArticles = moreArticlesResponse.data.map(
-      (formattedMoreArticle) => {
-        return {
-          ...formattedMoreArticle,
-          publish_date: formatDate(
-            formattedMoreArticle.publish_date
-          ),
-        }
-      }
-    )
+  const paths = [];
 
-    articles[index] = {
+  for (const article of articles) {
+    const moreArticles = await directus.request(
+      readItems("articles", {
+        fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
+        filter: {
+          _and: [{ id: { _neq: article.id } }, { status: { _eq: "published" } }],
+        },
+        limit: 2,
+      })
+    );
+
+    const formattedMoreArticles = moreArticles.map((a) => ({
+      ...a,
+      publish_date: formatDate(a.publish_date),
+    }));
+
+    paths.push({
       params: { slug: article.id.toString() },
       props: {
         article: {
           ...article,
           publish_date: formatDate(article.publish_date),
           moreArticles: formattedMoreArticles,
-        }
-      }
-    }
+        },
+      },
+    });
   }
 
-  return articles
+  return paths;
 }
-const { article } = Astro.props
+
+const { article } = Astro.props;
 ---
 
     <Layout title={article.title} meta={article.content}>
@@ -59,7 +59,6 @@ const { article } = Astro.props
             <span>Ver todos</span>
           </a>
           <div class="container ">
-            <!-- <h1 class="current-article__title text-center">{article.title}</h1> -->
             <div class="current-article__detail">
               <div class="current-article__wrapperOuter">
                 <div class="current-article__wrapperInner">
@@ -82,22 +81,9 @@ const { article } = Astro.props
             </div>
             <div class="current-article__body">
               <div class="current-article__bodyContent" set:html={article.content}></div>
-              <!-- <ul class="current-article__bodySocials">
-                <li>
-                  <a href={currentPath} target="_blank" rel="noreferrer noopener">
-                    <Link />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://t.me/+Dd4hO8FnzB00MDdk" target="_blank" rel="noreferrer noopener">
-                    <Telegram />
-                  </a>
-                </li>
-              </ul> -->
             </div>
           </div>
         </section>
       </div>
       <MoreArticles articles={article.moreArticles} />
     </Layout>
-

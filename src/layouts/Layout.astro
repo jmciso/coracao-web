@@ -6,7 +6,7 @@ import Footer from "../components/Footer.astro";
 const { title, meta, keywords } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="pt">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -61,18 +61,12 @@ const { title, meta, keywords } = Astro.props;
     <Footer />
   </body>
   <style is:global>
-    main {
-      /* margin: auto; */
-      /* padding: 1.5rem; */
-      /* max-width: 60ch; */
-    }
     .page-title {
       font-family: var(--family-sans-serif);
       font-size: 32px;
       text-transform: uppercase;
       letter-spacing: 12px;
       line-height: 60px;
-      color: #cc5549;
       color: var(--foreground-subdued);
       margin-bottom: 15px;
     }

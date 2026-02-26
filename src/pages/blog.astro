@@ -2,23 +2,25 @@
 import Article from '../components/Article.astro';
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
-import { formatDate, getDirectusClient } from '../utils/utils';
+import { formatDate, getDirectusClient, readItems } from '../utils/utils';
 
-const directus = await getDirectusClient()
-const response = await directus.items("articles").readByQuery({
-  fields: ["*", "user_created", "user_created.first_name", "user_created.last_name"],
-  filter: { status: { _eq: "published" } },
-  sort: "-publish_date",
-})
-const formattedArticles = response?.data.map((article) => {
-  return {
-    ...article,
-    publish_date: formatDate(article.publish_date),
-  }
-})
-const [hero, ...articles] = formattedArticles
-const meta = "Blog da casa coração. Terapias, workshops e retiros."
-const keywords = "blog, terapias, workshops, retiros, casa coração";
+const directus = getDirectusClient();
+const articles = await directus.request(
+  readItems("articles", {
+    fields: ["*", "user_created", "user_created.first_name", "user_created.last_name"],
+    filter: { status: { _eq: "published" } },
+    sort: ["-publish_date"],
+  })
+);
+
+const formattedArticles = articles.map((article) => ({
+  ...article,
+  publish_date: formatDate(article.publish_date),
+}));
+
+const [hero, ...rest] = formattedArticles;
+const meta = "Blog da casa coracao. Terapias, workshops e retiros.";
+const keywords = "blog, terapias, workshops, retiros, casa coracao";
 const blogUrl = "https://casa-coracao.com/blog";
 ---
 
@@ -28,18 +30,18 @@ const blogUrl = "https://casa-coracao.com/blog";
     {
       "@context": "https://schema.org",
       "@type": "Blog",
-      "name": "Blog Casa Coração",
-      "description": "Blog da casa coração. Terapias, workshops e retiros.",
+      "name": "Blog Casa Coracao",
+      "description": "Blog da casa coracao. Terapias, workshops e retiros.",
       "url": "https://casa-coracao.com/blog",
       "publisher": {
         "@type": "Organization",
-        "name": "Casa Coração",
+        "name": "Casa Coracao",
         "logo": {
           "@type": "ImageObject",
           "url": "https://casa-coracao.com/cc-logo.svg"
         }
       },
-      "blogPost": {articles?.map(article => ({
+      "blogPost": {rest?.map(article => ({
         "@type": "BlogPosting",
         "headline": article.title,
         "description": article.abstract,
@@ -56,8 +58,8 @@ const blogUrl = "https://casa-coracao.com/blog";
 		  <div class="container">
 			<Hero article={hero} />
 			<div class="articles-grid">
-			  {articles.map((article, index) => (
-			  <Article article={article} bordered={index !==articles.length - 1} />
+			  {rest.map((article, index) => (
+			  <Article article={article} bordered={index !== rest.length - 1} />
 			  ))}
 			</div>
 		  </div>

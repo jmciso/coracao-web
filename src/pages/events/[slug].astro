@@ -1,38 +1,39 @@
 ---
 import BackIcon from '../../components/icons/Back.astro'
-import { getDirectusClient, getAssetURL, formatDate } from '../../utils/utils'
+import { getDirectusClient, getAssetURL, formatDate, readItems } from '../../utils/utils'
 import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
-  const directus = await getDirectusClient();
-  const response = await directus.items("events").readByQuery({
-    fields: ["*", "user_updated.avatar", "user_created.first_name", "user_created.last_name"],
-    filter: { status: { _eq: "published" } },
-    limit: -1,
-  })
+  const directus = getDirectusClient();
 
-  let events = response.data
-
-  for (const [index, event] of Object.entries(events)) {
-    const moreEventsResponse = await directus.items("events").readByQuery({
-      fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
-      filter: {
-        _and: [{ id: { _neq: event.id } }, { status: { _eq: "published" } }],
-      },
-      limit: 2,
+  const events = await directus.request(
+    readItems("events", {
+      fields: ["*", "user_updated.avatar", "user_created.first_name", "user_created.last_name"],
+      filter: { status: { _eq: "published" } },
+      limit: -1,
     })
+  );
 
-    const formattedMoreEvents = moreEventsResponse.data.map(
-      (formattedMoreEvents) => {
-        return {
-          ...formattedMoreEvents,
-          start: formatDate(event.start),
-          end: formatDate(event.end)
-        }
-      }
-    )
+  const paths = [];
 
-    events[index] = {
+  for (const event of events) {
+    const moreEvents = await directus.request(
+      readItems("events", {
+        fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
+        filter: {
+          _and: [{ id: { _neq: event.id } }, { status: { _eq: "published" } }],
+        },
+        limit: 2,
+      })
+    );
+
+    const formattedMoreEvents = moreEvents.map((e) => ({
+      ...e,
+      start: formatDate(e.start),
+      end: formatDate(e.end),
+    }));
+
+    paths.push({
       params: { slug: event.id.toString() },
       props: {
         event: {
@@ -40,15 +41,17 @@ export async function getStaticPaths() {
           start: formatDate(event.start),
           end: formatDate(event.end),
           moreEvents: formattedMoreEvents,
-        }
-      }
-    }
+        },
+      },
+    });
   }
 
-  return events
+  return paths;
 }
-const { event } = Astro.props
+
+const { event } = Astro.props;
 ---
+
 <Layout title={event.title} meta={event.description}>
     <div class="current-article">
       <section class="mb-10">
@@ -57,7 +60,6 @@ const { event } = Astro.props
           <span>Ver todos</span>
         </a>
         <div class="container">
-          <!-- <h1 class="current-article__title text-center">{event.title}</h1> -->
           <div class="current-article__detail">
             <div class="current-article_coverImage">
               <img src={getAssetURL(event.front_img)} alt="" />
