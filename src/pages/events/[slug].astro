@@ -1,54 +1,42 @@
 ---
 import BackIcon from '../../components/icons/Back.astro'
-import { getDirectusClient, getAssetURL, formatDate } from '../../utils/utils'
+import { getDirectusClient, getAssetURL, formatDate, readItems } from '../../utils/utils'
 import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
-  const directus = await getDirectusClient();
-  const response = await directus.items("events").readByQuery({
-    fields: ["*", "user_updated.avatar", "user_created.first_name", "user_created.last_name"],
-    filter: { status: { _eq: "published" } },
-    limit: -1,
-  })
+  const directus = getDirectusClient();
 
-  let events = response.data
-
-  for (const [index, event] of Object.entries(events)) {
-    const moreEventsResponse = await directus.items("events").readByQuery({
+  const events = await directus.request(
+    readItems("events", {
       fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
-      filter: {
-        _and: [{ id: { _neq: event.id } }, { status: { _eq: "published" } }],
-      },
-      limit: 2,
+      filter: { status: { _eq: "published" } },
+      limit: -1,
     })
+  );
 
-    const formattedMoreEvents = moreEventsResponse.data.map(
-      (formattedMoreEvents) => {
-        return {
-          ...formattedMoreEvents,
-          start: formatDate(event.start),
-          end: formatDate(event.end)
-        }
-      }
-    )
+  return events.map((event) => {
+    const moreEvents = events
+      .filter((e) => e.id !== event.id)
+      .slice(0, 2)
+      .map((e) => ({ ...e, start: formatDate(e.start), end: formatDate(e.end) }));
 
-    events[index] = {
+    return {
       params: { slug: event.id.toString() },
       props: {
         event: {
           ...event,
           start: formatDate(event.start),
           end: formatDate(event.end),
-          moreEvents: formattedMoreEvents,
-        }
-      }
-    }
-  }
-
-  return events
+          moreEvents,
+        },
+      },
+    };
+  });
 }
-const { event } = Astro.props
+
+const { event } = Astro.props;
 ---
+
 <Layout title={event.title} meta={event.description}>
     <div class="current-article">
       <section class="mb-10">
@@ -57,7 +45,6 @@ const { event } = Astro.props
           <span>Ver todos</span>
         </a>
         <div class="container">
-          <!-- <h1 class="current-article__title text-center">{event.title}</h1> -->
           <div class="current-article__detail">
             <div class="current-article_coverImage">
               <img src={getAssetURL(event.front_img)} alt="" />
