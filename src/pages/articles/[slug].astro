@@ -15,37 +15,23 @@ export async function getStaticPaths() {
     })
   );
 
-  const paths = [];
+  return articles.map((article) => {
+    const moreArticles = articles
+      .filter((a) => a.id !== article.id)
+      .slice(0, 2)
+      .map((a) => ({ ...a, publish_date: formatDate(a.publish_date) }));
 
-  for (const article of articles) {
-    const moreArticles = await directus.request(
-      readItems("articles", {
-        fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
-        filter: {
-          _and: [{ id: { _neq: article.id } }, { status: { _eq: "published" } }],
-        },
-        limit: 2,
-      })
-    );
-
-    const formattedMoreArticles = moreArticles.map((a) => ({
-      ...a,
-      publish_date: formatDate(a.publish_date),
-    }));
-
-    paths.push({
+    return {
       params: { slug: article.id.toString() },
       props: {
         article: {
           ...article,
           publish_date: formatDate(article.publish_date),
-          moreArticles: formattedMoreArticles,
+          moreArticles,
         },
       },
-    });
-  }
-
-  return paths;
+    };
+  });
 }
 
 const { article } = Astro.props;

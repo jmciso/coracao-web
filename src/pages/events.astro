@@ -19,8 +19,8 @@ const formattedEvents = events.map((event) => ({
 }));
 
 const [topEvent, ...otherEvents] = formattedEvents;
-const meta = "Eventos da casa coracao. Terapias, workshops e retiros.";
-const keywords = "eventos, terapias, xamanismo, workshops, retiros, casa coracao";
+const meta = "Eventos da Casa Coração. Terapias, workshops e retiros.";
+const keywords = "eventos, terapias, xamanismo, workshops, retiros, Casa Coração";
 ---
 
 <Layout title="Eventos" meta={meta} keywords={keywords}>
@@ -30,7 +30,7 @@ const keywords = "eventos, terapias, xamanismo, workshops, retiros, casa coracao
 				<EventCard event={topEvent} ></EventCard>
 			</div>
 			<div class="articles-grid">
-			  {otherEvents.map((event, index) => (
+			  {otherEvents.map((event) => (
 			  <EventCard event={event}/>
 			  ))}
 			</div>

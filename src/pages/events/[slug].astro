@@ -8,45 +8,30 @@ export async function getStaticPaths() {
 
   const events = await directus.request(
     readItems("events", {
-      fields: ["*", "user_updated.avatar", "user_created.first_name", "user_created.last_name"],
+      fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
       filter: { status: { _eq: "published" } },
       limit: -1,
     })
   );
 
-  const paths = [];
+  return events.map((event) => {
+    const moreEvents = events
+      .filter((e) => e.id !== event.id)
+      .slice(0, 2)
+      .map((e) => ({ ...e, start: formatDate(e.start), end: formatDate(e.end) }));
 
-  for (const event of events) {
-    const moreEvents = await directus.request(
-      readItems("events", {
-        fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
-        filter: {
-          _and: [{ id: { _neq: event.id } }, { status: { _eq: "published" } }],
-        },
-        limit: 2,
-      })
-    );
-
-    const formattedMoreEvents = moreEvents.map((e) => ({
-      ...e,
-      start: formatDate(e.start),
-      end: formatDate(e.end),
-    }));
-
-    paths.push({
+    return {
       params: { slug: event.id.toString() },
       props: {
         event: {
           ...event,
           start: formatDate(event.start),
           end: formatDate(event.end),
-          moreEvents: formattedMoreEvents,
+          moreEvents,
         },
       },
-    });
-  }
-
-  return paths;
+    };
+  });
 }
 
 const { event } = Astro.props;
