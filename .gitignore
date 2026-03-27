@@ -21,6 +21,12 @@ pnpm-debug.log*
 .env.local
 .env.production
 
+# CMS runtime data (kept on server only)
+cms/data/
+cms/uploads/
+cms/backups/
+cms/.env
+
 # macOS-specific files
 .DS_Store
 

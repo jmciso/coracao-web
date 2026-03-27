@@ -1,0 +1,24 @@
+services:
+  database:
+    container_name: coracao-db
+    image: postgis/postgis:13-master
+    restart: unless-stopped
+    ports:
+      - "8001:5432"
+    volumes:
+      - ./data/database:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  directus:
+    container_name: coracao-cms
+    image: directus/directus:11.5.0
+    restart: unless-stopped
+    ports:
+      - 8055:8055
+    volumes:
+      - ./uploads:/directus/uploads
+    depends_on:
+      - database
+    env_file:
+      - .env

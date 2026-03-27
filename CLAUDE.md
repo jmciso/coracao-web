@@ -6,24 +6,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Casa Coracao is a spiritual wellness center website. The repo contains two independent sub-projects:
 
-- **coracao-web/** — Static site built with Astro.js v5.18, Tailwind CSS v4, and Directus SDK v21 (on `migration/v5` branch)
-- **coracao-web/** (master branch) — Legacy site: Astro v1.6.14, Tailwind v3, Directus SDK v10
-- **coracao-cms/** — Directus headless CMS running on Docker Compose with PostgreSQL
-- **cms-bkp/** — CMS backup (Directus v9.23.1 snapshot from 2024-09-29)
+- **coracao-web/** — Static site built with Astro.js v5.18, Tailwind CSS v4, and Directus SDK v21
+- **coracao-web/cms/** — Directus 11.5.0 CMS config (Docker Compose + PostgreSQL)
 
 Content (articles, events) is managed in Directus and fetched at build time to generate static HTML.
 
-## Active Migration
+## Stack
 
-The site is being migrated from legacy to latest versions. See `CMS-MIGRATION-GUIDE.md` for the Directus migration plan.
-
-| Component | Legacy (master) | Migrated (migration/v5) |
-|-----------|----------------|------------------------|
-| Astro | 1.6.14 | 5.18.0 |
-| Directus SDK | 10.3.1 | 21.1.0 |
-| Tailwind CSS | 3.2.4 | 4.2.1 |
-| Node.js | any | 22+ required (.nvmrc) |
-| Directus CMS | 9.23.1 | 11.5.0 (pending) |
+| Component | Version |
+|-----------|---------|
+| Astro | 5.18.0 |
+| Directus SDK | 21.1.0 |
+| Tailwind CSS | 4.2.1 |
+| Node.js | 22+ (.nvmrc) |
+| Directus CMS | 11.5.0 |
+| PostgreSQL | 13 (PostGIS) |
 
 ## Commands
 
@@ -35,11 +32,12 @@ npm run build      # Build static site to dist/
 npm run preview    # Preview production build locally
 ```
 
-CMS (from `cms-bkp/` or `coracao-cms/`):
+CMS (from `cms/`):
 
 ```bash
 docker compose up -d      # Start PostgreSQL + Directus (port 8055)
 docker compose down        # Stop services
+./backup.sh               # Backup database + uploads
 ```
 
 Mock Directus (no Docker needed, for build testing):
@@ -104,19 +102,4 @@ The site is primarily in Portuguese (pt-PT). Dates are formatted with `pt-PT` lo
 
 ## Git
 
-Repository: `git@github.com:jmciso/coracao-web.git` (git root is `coracao-web/`). Primary branch: `master`. Active development branch: `migration/v5`.
-
-## Migration Status
-
-**Completed:**
-- Astro v1 → v5 migration (all pages, components, layout)
-- Directus SDK v10 → v21 migration (composable API)
-- Tailwind v3 → v4 migration (CSS-first config)
-- Mock Directus server for build testing
-- Code cleanup: removed dead code, fixed bugs, dropped unused deps
-
-**Pending (on Linux server):**
-- Directus CMS v9.23.1 → v11.5.0 (see CMS-MIGRATION-GUIDE.md)
-- Recover missing upload files (48 files in DB, uploads/ dir empty)
-- Full end-to-end build with live CMS data
-- Visual comparison of old vs new site
+Repository: `git@github.com:jmciso/coracao-web.git`. Primary branch: `master`.
